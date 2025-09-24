@@ -1,4 +1,4 @@
-# 🚀 Exercícios de Lógica de Programação com JavaScript
+# 🚀 Exercícios de Front-End com JavaScript
 
 Repositório dedicado à resolução da lista de exercícios de JavaScript, focada em conceitos fundamentais de lógica de programação. Este projeto foi desenvolvido como parte da disciplina de **[Nome da Disciplina]** do professor(a) **[Nome do Professor(a)]**.
 

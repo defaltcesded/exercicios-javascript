@@ -17,14 +17,14 @@ Este projeto foi desenvolvido utilizando tecnologias web padrões:
 
 Cada exercício está contido em seu próprio arquivo `.html` para facilitar a visualização e execução individual.
 
-| Exercício | Descrição                                                              | Link para o Código                                                              |
-| :-------: | ---------------------------------------------------------------------- | :------------------------------------------------------------------------------: |
-|     1     | Calcula os anos necessários para a população do país A ultrapassar a B. | [Ver Código](./exercicio1_populacao.html)    |
-|     2     | Coleta 10 números e conta a quantidade de pares e ímpares.             | [Ver Código](./exercicio2_par_impar.html)    |
-|     3     | Encontra o menor, o maior e a soma de um conjunto de N números.        | [Ver Código](./exercicio3_min_max_soma.html) |
-|     4     | Calcula o salário atual de um funcionário com aumentos anuais.         | [Ver Código](./exercicio4_salario.html)      |
-|     5     | Encontra a área e o perímetro de um círculo a partir do raio.          | [Ver Código](./exercicio5_circulo.html)      |
-|     6     | Calcula o montante de um investimento com base em juros compostos.     | [Ver Código](./exercicio6_investimento.html) |
+| Exercício | Descrição                                                              | Link para o Código                                                                                        |
+| :-------: | ---------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------: |
+|     1     | Calcula os anos necessários para a população do país A ultrapassar a B. | [Ver Código](./lista-1-javascript-basico/exercicio1_populacao.html)    |
+|     2     | Coleta 10 números e conta a quantidade de pares e ímpares.             | [Ver Código](./lista-1-javascript-basico/exercicio2_par_impar.html)    |
+|     3     | Encontra o menor, o maior e a soma de um conjunto de N números.        | [Ver Código](./lista-1-javascript-basico/exercicio3_min_max_soma.html) |
+|     4     | Calcula o salário atual de um funcionário com aumentos anuais.         | [Ver Código](./lista-1-javascript-basico/exercicio4_salario.html)      |
+|     5     | Encontra a área e o perímetro de um círculo a partir do raio.          | [Ver Código](./lista-1-javascript-basico/exercicio5_circulo.html)      |
+|     6     | Calcula o montante de um investimento com base em juros compostos.     | [Ver Código](./lista-1-javascript-basico/exercicio6_investimento.html) |
 
 ---
 

@@ -34,7 +34,7 @@ Para executar qualquer um dos exercícios, siga os passos abaixo:
 
 1.  **Clone o repositório** (ou baixe os arquivos ZIP):
     ```bash
-    [git clone https://github.com/[seu-usuario-github]/[nome-do-repositorio].git](https://github.com/defaltcesded/exercicios-javascript.git)
+    [git clone https://github.com/[defaltcesded]/[exercicios-javascript].git]
     ```
 
 2.  **Navegue até a pasta** onde os arquivos foram salvos.

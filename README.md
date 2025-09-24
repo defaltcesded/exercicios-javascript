@@ -1,6 +1,6 @@
 # 🚀 Exercícios de Front-End com JavaScript
 
-Repositório dedicado à resolução da lista de exercícios de JavaScript, focada em conceitos fundamentais de lógica de programação. Este projeto foi desenvolvido como parte da disciplina de **[Front-End]** do professor(a) **[Gláucio Rocha]**.
+Repositório dedicado à resolução da lista de exercícios de JavaScript, focada em conceitos fundamentais de lógica de programação. Este projeto foi desenvolvido como parte da disciplina de **Front-End** do professor(a) **Gláucio Rocha**.
 
 ---
 
@@ -45,6 +45,6 @@ Para executar qualquer um dos exercícios, siga os passos abaixo:
 
 ## 👨‍💻 Autor
 
-Desenvolvido por **[defaltcesded]**.
+Desenvolvido por **defaltcesded**.
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/[defaltcesded])

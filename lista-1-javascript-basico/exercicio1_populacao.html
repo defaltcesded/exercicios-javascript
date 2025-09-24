@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>exercício 1 - população</title>
+</head>
+<body>
+    <script>
+        let popa = 80000;
+        let popb = 200000;
+        const taxaa = 0.03;
+        const taxab = 0.015;
+        let anos = 0;
+
+        while (popa <= popb) {
+            popa += popa * taxaa;
+            popb += popb * taxab;
+            anos++;
+        }
+
+        alert(`serão necessários ${anos} anos para que a população do país a ultrapasse ou iguale a população do país b.`);
+        console.log(`anos necessários: ${anos}`);
+    </script>
+</body>
+</html>

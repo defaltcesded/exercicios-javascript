@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>exercício 3 - min, max e soma</title>
+</head>
+<body>
+    <script>
+        const n = parseInt(prompt("quantos números você deseja inserir?"));
+        let menor = Infinity;
+        let maior = -Infinity;
+        let soma = 0;
+
+        for (let i = 0; i < n; i++) {
+            let numero = parseFloat(prompt(`digite o ${i + 1}º número:`));
+            soma += numero;
+            if (numero > maior) {
+                maior = numero;
+            }
+            if (numero < menor) {
+                menor = numero;
+            }
+        }
+
+        alert(`menor valor: ${menor}\nmaior valor: ${maior}\nsoma dos valores: ${soma}`);
+        console.log(`menor: ${menor}, maior: ${maior}, soma: ${soma}`);
+    </script>
+</body>
+</html>

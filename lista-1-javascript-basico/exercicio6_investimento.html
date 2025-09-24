@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>exercício 6 - investimento</title>
+</head>
+<body>
+    <script>
+        function calcular_investimento() {
+            const capital = parseFloat(prompt("digite o capital inicial (c):"));
+            const taxa_juros = parseFloat(prompt("digite a taxa de juros mensal (%):"));
+            const tempo_meses = parseInt(prompt("digite o tempo do investimento (em meses):"));
+
+            if (!isNaN(capital) && !isNaN(taxa_juros) && !isNaN(tempo_meses)) {
+                const taxa_decimal = taxa_juros / 100;
+                const montante = capital * Math.pow((1 + taxa_decimal), tempo_meses);
+
+                alert(`o montante (retorno) do investimento será de: r$ ${montante.toFixed(2)}`);
+                console.log(`montante: r$ ${montante.toFixed(2)}`);
+            } else {
+                alert("um ou mais valores inseridos são inválidos.");
+            }
+        }
+
+        calcular_investimento();
+    </script>
+</body>
+</html>

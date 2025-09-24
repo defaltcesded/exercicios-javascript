@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>exercício 4 - aumento salarial</title>
+</head>
+<body>
+    <script>
+        // primeira versão: salário fixo de r$ 1000
+        let salario = 1000.00;
+        let percentual_aumento = 0.015; // 1.5%
+
+        // aumento de 1996
+        salario += salario * percentual_aumento;
+
+        // aumentos de 1997 em diante
+        for (let ano = 1997; ano <= new Date().getFullYear(); ano++) {
+            percentual_aumento *= 2;
+            salario += salario * percentual_aumento;
+        }
+        
+        console.log(`salário atual (versão 1): r$ ${salario.toFixed(2)}`);
+        alert(`o salário atual do funcionário (iniciado com r$ 1000) é: r$ ${salario.toFixed(2)}`);
+
+
+        // segunda versão: usuário informa o salário
+        function calcular_salario_atual() {
+            let salario_inicial = parseFloat(prompt("digite o salário inicial do funcionário:"));
+            let salario_atual = salario_inicial;
+            let aumento = 0.015;
+
+            // aumento de 1996
+            salario_atual += salario_atual * aumento;
+
+            // aumentos de 1997 em diante
+            for (let ano = 1997; ano <= new Date().getFullYear(); ano++) {
+                aumento *= 2;
+                salario_atual += salario_atual * aumento;
+            }
+            
+            alert(`o salário atual do funcionário (versão 2) é: r$ ${salario_atual.toFixed(2)}`);
+            console.log(`salário atual (versão 2): r$ ${salario_atual.toFixed(2)}`);
+        }
+
+        calcular_salario_atual();
+    </script>
+</body>
+</html>

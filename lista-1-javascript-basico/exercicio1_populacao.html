@@ -2,24 +2,61 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>exercício 1 - população</title>
+    <title>exercício 1 - cálculo de população</title>
 </head>
 <body>
-    <script>
-        let popa = 80000;
-        let popb = 200000;
-        const taxaa = 0.03;
-        const taxab = 0.015;
-        let anos = 0;
+    <h1>cálculo de anos pra população passar</h1>
+    <p id="resultado"></p>
 
-        while (popa <= popb) {
-            popa += popa * taxaa;
-            popb += popb * taxab;
-            anos++;
+    <script>
+        // aqui a gnt define os dados iniciais de cada pais.
+        // usar um objeto {} pra cada um deixa o codigo mais organizado
+        // do que ter um monte de variavel solta.
+        const pais_a = {
+            pop: 80000,
+            taxa: 0.03
+        };
+
+        const pais_b = {
+            pop: 200000,
+            taxa: 0.015
+        };
+
+        // essa funcao faz a logica principal.
+        // ela recebe os dois paises e devolve o numero de anos.
+        function calcula_anos(menor, maior) {
+            let anos_passados = 0;
+            
+            // declarando umas variaveis pra gente poder mudar os valores
+            // sem mexer nos dados originais la de cima.
+            let pop_atual_menor = menor.pop;
+            let pop_atual_maior = maior.pop;
+
+            // o loop principal. enquanto o menor for menor, a gente continua.
+            while (pop_atual_menor <= pop_atual_maior) {
+                // aqui a magica acontece. a gente calcula o aumento do ano
+                // e soma na populacao atual de cada um.
+                pop_atual_menor += pop_atual_menor * menor.taxa;
+                pop_atual_maior += pop_atual_maior * maior.taxa;
+                
+                // nao esquecer de contar mais um ano que se passou.
+                anos_passados++;
+            }
+
+            // quando o loop acabar, a gente retorna o total de anos.
+            return anos_passados;
         }
 
-        alert(`serão necessários ${anos} anos para que a população do país a ultrapasse ou iguale a população do país b.`);
-        console.log(`anos necessários: ${anos}`);
+        // aqui a gente executa a funcao e guarda o resultado.
+        const tempo_necessario = calcula_anos(pais_a, pais_b);
+
+        // agora é só mostrar na tela pro professor ver.
+        const elemento_resultado = document.getElementById('resultado');
+        elemento_resultado.textContent = `pro país a passar o país b, vai levar ${tempo_necessario} anos.`;
+        
+        // e um console.log pra garantir.
+        console.log(`total de anos: ${tempo_necessario}`);
+
     </script>
 </body>
 </html>

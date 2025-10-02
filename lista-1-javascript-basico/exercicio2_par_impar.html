@@ -2,25 +2,53 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>exercício 2 - pares e ímpares</title>
+    <title>exercício 2 - contando pares e impares (do meu jeito)</title>
 </head>
 <body>
+    <h1>contador de pares e ímpares</h1>
+    <p id="resultado"></p>
+
     <script>
-        let pares = 0;
-        let impares = 0;
+        const todos_os_numeros = [];
 
+        // primeiro, a gente só se preocupa em pegar os 10 numeros do usuario.
+        // nada de if/else aqui. uma coisa de cada vez.
         for (let i = 1; i <= 10; i++) {
-            let numero = parseInt(prompt(`digite o ${i}º número inteiro:`));
-
-            if (numero % 2 === 0) {
-                pares++;
-            } else {
-                impares++;
-            }
+            // esse '|| 0' é um truque. se o usuario cancelar ou digitar algo
+            // que não é numero, ele vira 0 em vez de dar erro.
+            let numero_digitado = parseInt(prompt(`digite o ${i}º número:`)) || 0;
+            todos_os_numeros.push(numero_digitado);
         }
 
-        alert(`quantidade de números pares: ${pares}\nquantidade de números ímpares: ${impares}`);
-        console.log(`pares: ${pares}, ímpares: ${impares}`);
+        // ok, agora a gente tem uma lista com todos os numeros.
+        // vamos usar o 'reduce' pra contar. ele é tipo um loop superpoderoso
+        // que transforma uma lista inteira em uma unica coisa.
+        // no nosso caso, essa 'unica coisa' vai ser um objeto com a contagem.
+
+        const contagem_final = todos_os_numeros.reduce((contador, numero_atual) => {
+            
+            // a gente checa se o numero é par ou impar.
+            if (numero_atual % 2 === 0) {
+                // se for par, a gente aumenta o valor de 'pares' dentro do nosso objeto contador.
+                contador.pares++;
+            } else {
+                // se nao for, aumenta o de 'impares'.
+                contador.impares++;
+            }
+            
+            // importante: o reduce sempre precisa que a gente retorne o objeto contador
+            // pra ele usar na proxima volta do loop.
+            return contador;
+
+        }, { pares: 0, impares: 0 }); // esse é o valor inicial do nosso objeto contador.
+
+        
+        // agora é só mostrar o resultado que ta no objeto 'contagem_final'.
+        const elemento_resultado = document.getElementById('resultado');
+        elemento_resultado.textContent = `a gente contou ${contagem_final.pares} números pares e ${contagem_final.impares} ímpares.`;
+        
+        console.log('resultado da contagem:', contagem_final);
+
     </script>
 </body>
 </html>

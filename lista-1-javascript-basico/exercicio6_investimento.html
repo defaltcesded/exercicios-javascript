@@ -2,27 +2,74 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>exercício 6 - investimento</title>
+    <title>exercício 6 - cálculo de juros compostos</title>
 </head>
 <body>
+    <h1>simulador de investimento</h1>
+    <div id="resultado"></div>
+
     <script>
-        function calcular_investimento() {
+        // primeira funcao: a unica responsabilidade dela é pegar os dados do usuario.
+        // ela retorna um objeto com tudo dentro, bem organizado.
+        function pegar_dados_investimento() {
             const capital = parseFloat(prompt("digite o capital inicial (c):"));
-            const taxa_juros = parseFloat(prompt("digite a taxa de juros mensal (%):"));
-            const tempo_meses = parseInt(prompt("digite o tempo do investimento (em meses):"));
+            // a gente ja converte a taxa pra decimal aqui
+            const taxa = parseFloat(prompt("digite a taxa de juros mensal (%):")) / 100;
+            const tempo = parseInt(prompt("digite o tempo do investimento (em meses):"));
 
-            if (!isNaN(capital) && !isNaN(taxa_juros) && !isNaN(tempo_meses)) {
-                const taxa_decimal = taxa_juros / 100;
-                const montante = capital * Math.pow((1 + taxa_decimal), tempo_meses);
-
-                alert(`o montante (retorno) do investimento será de: r$ ${montante.toFixed(2)}`);
-                console.log(`montante: r$ ${montante.toFixed(2)}`);
-            } else {
-                alert("um ou mais valores inseridos são inválidos.");
-            }
+            return {
+                capital_inicial: capital,
+                taxa_mensal: taxa,
+                meses: tempo
+            };
         }
 
-        calcular_investimento();
+        // segunda funcao: a unica responsabilidade dela é calcular.
+        // ela nao sabe de onde os dados vieram, só recebe o objeto e faz a conta.
+        // isso é otimo pq vc poderia usar essa mesma funcao em outra parte do sistema.
+        function calcular_juros_compostos(dados) {
+            // usando o operador ** pra exponenciacao. é mais moderno que math.pow().
+            const montante = dados.capital_inicial * ((1 + dados.taxa_mensal) ** dados.meses);
+            return montante;
+        }
+
+        // terceira funcao: a unica responsabilidade dela é mostrar o resultado na tela.
+        function exibir_resultado(valor_final) {
+            const elemento_resultado = document.getElementById('resultado');
+            
+            // aqui tá o pulo do gato.
+            // tolocalestring é o jeito profissional de formatar numero como dinheiro.
+            // ele ja coloca o 'r$', a virgula, os pontos e as casas decimais certinho.
+            // muito melhor que 'tofixed(2)'.
+            const valor_formatado = valor_final.toLocaleString('pt-br', { style: 'currency', currency: 'brl' });
+
+            elemento_resultado.innerHTML = `<p>o retorno total do seu investimento será de:</p>
+                                            <h2>${valor_formatado}</h2>`;
+        }
+
+        // ---- agora a gente orquestra tudo ----
+
+        // 1. pega os dados
+        const meu_investimento = pegar_dados_investimento();
+        
+        // 2. valida os dados
+        if (meu_investimento.capital_inicial > 0 && meu_investimento.taxa_mensal > 0 && meu_investimento.meses > 0) {
+            
+            // 3. se forem bons, calcula
+            const montante_final = calcular_juros_compostos(meu_investimento);
+
+            // 4. e finalmente, exibe
+            exibir_resultado(montante_final);
+
+            console.log("cálculo feito com sucesso:", {
+                dados: meu_investimento,
+                resultado: montante_final
+            });
+
+        } else {
+            document.getElementById('resultado').textContent = "hum, parece que um dos valores que vc digitou é inválido. tente de novo com números positivos.";
+        }
+
     </script>
 </body>
 </html>

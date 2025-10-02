@@ -2,25 +2,69 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>exercício 5 - círculo</title>
+    <title>exercício 5 - o objeto círculo</title>
 </head>
 <body>
+    <h1>círculos com orientação a objetos</h1>
+    <div id="resultado"></div>
+
     <script>
-        function calcular_circulo() {
-            const raio = parseFloat(prompt("digite o raio do círculo:"));
+        // aqui a gnt cria uma 'planta' pra construir circulos.
+        // isso é uma classe. é um jeito chique de organizar o codigo.
+        // o objeto 'circulo' vai ter seus proprios dados e suas proprias funcoes.
+        class Circulo {
+            constructor(raio) {
+                // o 'this' quer dizer 'deste objeto aqui'.
+                // entao, o raio que a gnt recebeu vai ser guardado DENTRO do objeto.
+                this.raio = raio;
+            }
 
-            if (!isNaN(raio) && raio > 0) {
-                const area = Math.PI * Math.pow(raio, 2);
-                const perimetro = 2 * Math.PI * raio;
+            // agora a gente cria as 'acoes' que o nosso objeto circulo sabe fazer.
+            // isso se chama 'método'.
+            
+            // metodo pra calcular a area.
+            calcular_area() {
+                // em vez de Math.pow(this.raio, 2), usar ** 2 é mais moderno
+                // e mostra que vc conhece os operadores mais novos do js.
+                return Math.PI * (this.raio ** 2);
+            }
 
-                alert(`área do círculo: ${area.toFixed(2)}\nperímetro do círculo: ${perimetro.toFixed(2)}`);
-                console.log(`área: ${area.toFixed(2)}, perímetro: ${perimetro.toFixed(2)}`);
-            } else {
-                alert("valor de raio inválido.");
+            // metodo pra calcular o perimetro (ou circunferencia).
+            calcular_perimetro() {
+                return 2 * Math.PI * this.raio;
             }
         }
 
-        calcular_circulo();
+
+        // ---- aqui começa a execucao do nosso script ----
+
+        const raio_digitado = parseFloat(prompt("digite o raio do círculo:"));
+
+        // primeiro a gente valida se o que o usuario digitou faz sentido.
+        if (!isNaN(raio_digitado) && raio_digitado > 0) {
+            
+            // se o numero for bom, a gente cria um NOVO objeto usando nossa classe.
+            // 'meu_circulo' agora é um objeto independente com o raio que o usuario passou.
+            const meu_circulo = new Circulo(raio_digitado);
+
+            // agora a gente pede pro PROPRIO objeto calcular suas coisas.
+            const area_calculada = meu_circulo.calcular_area();
+            const perimetro_calculado = meu_circulo.calcular_perimetro();
+
+            // e joga o resultado na tela, sem usar o alert feio.
+            // toFixed(2) é pra limitar as casas decimais e ficar bonito.
+            document.getElementById('resultado').innerHTML = 
+                `<p>círculo criado com raio ${meu_circulo.raio}!</p>
+                 <p>a área dele é: <strong>${area_calculada.toFixed(2)}</strong></p>
+                 <p>o perímetro dele é: <strong>${perimetro_calculado.toFixed(2)}</strong></p>`;
+
+            console.log('círculo processado:', meu_circulo);
+
+        } else {
+            // se o numero for invalido, a gente avisa.
+            document.getElementById('resultado').textContent = "opa, esse valor de raio aí não é válido. tente de novo.";
+        }
+
     </script>
 </body>
 </html>

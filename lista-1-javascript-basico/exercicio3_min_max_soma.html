@@ -2,28 +2,59 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>exercício 3 - min, max e soma</title>
+    <title>exercício 3 - min, max, soma (do meu jeito)</title>
 </head>
 <body>
-    <script>
-        const n = parseInt(prompt("quantos números você deseja inserir?"));
-        let menor = Infinity;
-        let maior = -Infinity;
-        let soma = 0;
+    <h1>analisador de números</h1>
+    <p id="resultado"></p>
 
-        for (let i = 0; i < n; i++) {
+    <script>
+        const numeros_inseridos = [];
+        const quantidade = parseInt(prompt("quantos números vc quer analisar?")) || 0;
+
+        // 1º passo: só pegar os numeros. mais nada.
+        // a gnt guarda tudo numa lista pra analisar depois com calma.
+        for (let i = 0; i < quantidade; i++) {
             let numero = parseFloat(prompt(`digite o ${i + 1}º número:`));
-            soma += numero;
-            if (numero > maior) {
-                maior = numero;
-            }
-            if (numero < menor) {
-                menor = numero;
+            // se o usuario digitar algo invalido, a gnt ignora pra nao quebrar o codigo
+            if (!isNaN(numero)) {
+                numeros_inseridos.push(numero);
             }
         }
 
-        alert(`menor valor: ${menor}\nmaior valor: ${maior}\nsoma dos valores: ${soma}`);
-        console.log(`menor: ${menor}, maior: ${maior}, soma: ${soma}`);
+        // 2º passo: agora que temos a lista, vamos calcular tudo.
+        // isso é bem mais organizado.
+
+        // pra evitar erro se o usuario nao digitar numero nenhum
+        if (numeros_inseridos.length > 0) {
+            
+            // pra achar o menor e o maior, nao precisa de loop.
+            // o javascript ja tem uma ferramenta pra isso.
+            // o '...' (spread operator) é um truque moderno pra "espalhar"
+            // os itens da nossa lista como argumentos pra funcao.
+            const menor_valor = Math.min(...numeros_inseridos);
+            const maior_valor = Math.max(...numeros_inseridos);
+
+            // a soma a gente faz com o reduce, que é bem mais chique
+            // que um 'for' loop somando um por um.
+            const soma_total = numeros_inseridos.reduce((acumulador, numero_atual) => {
+                return acumulador + numero_atual;
+            }, 0); // o 0 aqui é onde a soma começa.
+
+            // 3º passo: mostrar o resultado na tela.
+            document.getElementById('resultado').textContent = 
+                `analisamos os números! o menor foi ${menor_valor}, o maior foi ${maior_valor} e a soma de tudo deu ${soma_total}.`;
+
+            console.log({
+                menor: menor_valor,
+                maior: maior_valor,
+                soma: soma_total
+            });
+
+        } else {
+            document.getElementById('resultado').textContent = "vc não digitou nenhum número válido pra gente analisar.";
+        }
+
     </script>
 </body>
 </html>
